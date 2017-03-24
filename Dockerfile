@@ -1,6 +1,30 @@
 FROM python:3.5
 MAINTAINER Paulus Schoutsen <Paulus@PaulusSchoutsen.nl>
 
+LABEL org.freenas.interactive="false" 		\
+      org.freenas.version="0.40.2"		\
+      org.freenas.upgradeable="false"		\
+      org.freenas.expose-ports-at-host="true"	\
+      org.freenas.autostart="true"		\
+#      org.freenas.capabilities-add="NET_BROADCAST" \
+      org.freenas.web-ui-protocol="http"	\
+      org.freenas.web-ui-port=8123		\
+#      org.freenas.web-ui-path="web"		\
+      org.freenas.port-mappings="8123:8123/tcp"			\
+      org.freenas.volumes="[					\
+          {							\
+              \"name\": \"/config\",				\
+              \"descr\": \"Config storage space\"		\
+          },							\
+      ]"							\
+      org.freenas.settings="[ 					\
+          {							\
+              \"env\": \"TZ\",					\
+              \"descr\": \"Home Assistant container Timezone\",		\
+              \"optional\": true				\
+          },							\
+      ]"
+
 # Uncomment any of the following lines to disable the installation.
 #ENV INSTALL_TELLSTICK no
 #ENV INSTALL_OPENALPR no
